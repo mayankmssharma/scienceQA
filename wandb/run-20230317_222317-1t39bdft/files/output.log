@@ -1,0 +1,22 @@
+12289 12289
+1195 1195
+1233 1233
+Traceback (most recent call last):
+  File "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/train_scienceqa.py", line 277, in <module>
+    train_loss, train_acc, train_f1 = train_or_eval_model(model, train_loader, optimizer, split="Train")
+  File "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/train_scienceqa.py", line 141, in train_or_eval_model
+    loss, p, p_cls = model(batch)
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/models.py", line 77, in forward
+    preds.append((np.argmax(d_lbl[c_key]),np.argmax(d_pred[c_key])))
+  File "<__array_function__ internals>", line 200, in argmax
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 1242, in argmax
+    return _wrapfunc(a, 'argmax', axis=axis, out=out, **kwds)
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 54, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 43, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/torch/_tensor.py", line 757, in __array__
+    return self.numpy()
+RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.

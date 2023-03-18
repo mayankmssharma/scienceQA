@@ -1,0 +1,2 @@
+Namespace(lr=3e-06, wd=0.0, warm_up_steps=0, adam_epsilon=1e-08, bs=16, eval_bs=64, epochs=5, name='distilroberta-base', device='cpu', shuffle=False, input_format='1', num_choices=-1, exp_id='1679117132')
+

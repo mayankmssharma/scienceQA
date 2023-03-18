@@ -1,0 +1,134 @@
+7606 7606
+1195 1195
+1233 1233
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Traceback (most recent call last):
+  File "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/train_scienceqa.py", line 277, in <module>
+    train_loss, train_acc, train_f1 = train_or_eval_model(model, train_loader, optimizer, split="Train")
+  File "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/train_scienceqa.py", line 150, in train_or_eval_model
+    loss.backward()
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/torch/_tensor.py", line 396, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/Users/naigamshah/miniconda3/envs/torch/lib/python3.9/site-packages/wandb/wandb_torch.py", line 282, in <lambda>
+    handle = var.register_hook(lambda grad: _callback(grad, log_track))
+KeyboardInterrupt

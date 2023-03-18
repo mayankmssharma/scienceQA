@@ -1,0 +1,175 @@
+2023-03-17 22:28:09,591 INFO    StreamThr :89791 [internal.py:wandb_internal():88] W&B internal server running at pid: 89791, started at: 2023-03-17 22:28:09.584907
+2023-03-17 22:28:09,593 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: status
+2023-03-17 22:28:09,594 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: status
+2023-03-17 22:28:09,595 DEBUG   SenderThread:89791 [sender.py:send():301] send: header
+2023-03-17 22:28:09,595 INFO    WriterThread:89791 [datastore.py:open_for_write():75] open: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/run-p9hmm6n9.wandb
+2023-03-17 22:28:09,603 DEBUG   SenderThread:89791 [sender.py:send():301] send: run
+2023-03-17 22:28:09,944 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: check_version
+2023-03-17 22:28:09,944 INFO    SenderThread:89791 [dir_watcher.py:__init__():216] watching files in: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files
+2023-03-17 22:28:09,945 INFO    SenderThread:89791 [sender.py:_start_run_threads():912] run started: p9hmm6n9 with start time 1679117289.565509
+2023-03-17 22:28:09,945 DEBUG   SenderThread:89791 [sender.py:send():301] send: summary
+2023-03-17 22:28:09,945 INFO    SenderThread:89791 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-03-17 22:28:09,945 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: check_version
+2023-03-17 22:28:10,047 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: run_start
+2023-03-17 22:28:10,047 DEBUG   HandlerThread:89791 [meta.py:__init__():34] meta init
+2023-03-17 22:28:10,049 DEBUG   HandlerThread:89791 [meta.py:__init__():49] meta init done
+2023-03-17 22:28:10,050 DEBUG   HandlerThread:89791 [meta.py:probe():215] probe
+2023-03-17 22:28:10,057 DEBUG   HandlerThread:89791 [meta.py:_setup_git():205] setup git
+2023-03-17 22:28:10,087 DEBUG   HandlerThread:89791 [meta.py:_setup_git():212] setup git done
+2023-03-17 22:28:10,088 DEBUG   HandlerThread:89791 [meta.py:_save_pip():53] save pip
+2023-03-17 22:28:10,088 DEBUG   HandlerThread:89791 [meta.py:_save_pip():67] save pip done
+2023-03-17 22:28:10,088 DEBUG   HandlerThread:89791 [meta.py:_save_conda():74] save conda
+2023-03-17 22:28:10,952 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/requirements.txt
+2023-03-17 22:28:10,952 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-summary.json
+2023-03-17 22:28:10,952 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/conda-environment.yaml
+2023-03-17 22:28:13,463 DEBUG   HandlerThread:89791 [meta.py:_save_conda():84] save conda done
+2023-03-17 22:28:13,463 DEBUG   HandlerThread:89791 [meta.py:probe():253] probe done
+2023-03-17 22:28:13,467 DEBUG   SenderThread:89791 [sender.py:send():301] send: telemetry
+2023-03-17 22:28:13,468 DEBUG   SenderThread:89791 [sender.py:send():301] send: files
+2023-03-17 22:28:13,468 INFO    SenderThread:89791 [sender.py:_save_file():1155] saving file wandb-metadata.json with policy now
+2023-03-17 22:28:13,472 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: stop_status
+2023-03-17 22:28:13,472 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: stop_status
+2023-03-17 22:28:13,612 DEBUG   SenderThread:89791 [sender.py:send():301] send: telemetry
+2023-03-17 22:28:13,613 DEBUG   SenderThread:89791 [sender.py:send():301] send: telemetry
+2023-03-17 22:28:13,966 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/conda-environment.yaml
+2023-03-17 22:28:13,966 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-metadata.json
+2023-03-17 22:28:14,074 INFO    Thread-17 :89791 [upload_job.py:push():139] Uploaded file /var/folders/y8/0_f1c8r15g173_kwn5_rb0_80000gn/T/tmpjl490sjqwandb/1oxnotxz-wandb-metadata.json
+2023-03-17 22:28:14,826 DEBUG   SenderThread:89791 [sender.py:send():301] send: exit
+2023-03-17 22:28:14,827 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:14,827 INFO    SenderThread:89791 [sender.py:send_exit():437] handling exit code: 1
+2023-03-17 22:28:14,827 INFO    SenderThread:89791 [sender.py:send_exit():439] handling runtime: 4
+2023-03-17 22:28:14,827 INFO    SenderThread:89791 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-03-17 22:28:14,827 INFO    SenderThread:89791 [sender.py:send_exit():445] send defer
+2023-03-17 22:28:14,828 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:14,828 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:14,828 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 0
+2023-03-17 22:28:14,828 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:14,828 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 0
+2023-03-17 22:28:14,829 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 1
+2023-03-17 22:28:14,829 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:14,829 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 1
+2023-03-17 22:28:14,971 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-summary.json
+2023-03-17 22:28:14,972 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/output.log
+2023-03-17 22:28:15,384 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:15,384 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:15,384 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 1
+2023-03-17 22:28:15,384 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 2
+2023-03-17 22:28:15,385 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:15,385 DEBUG   SenderThread:89791 [sender.py:send():301] send: stats
+2023-03-17 22:28:15,385 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:15,385 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 2
+2023-03-17 22:28:15,386 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:15,386 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 2
+2023-03-17 22:28:15,386 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 3
+2023-03-17 22:28:15,386 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:15,386 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 3
+2023-03-17 22:28:15,386 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:15,386 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 3
+2023-03-17 22:28:15,386 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 4
+2023-03-17 22:28:15,386 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:15,386 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 4
+2023-03-17 22:28:15,386 DEBUG   SenderThread:89791 [sender.py:send():301] send: summary
+2023-03-17 22:28:15,387 INFO    SenderThread:89791 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-03-17 22:28:15,387 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:15,387 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 4
+2023-03-17 22:28:15,387 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 5
+2023-03-17 22:28:15,387 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:15,387 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 5
+2023-03-17 22:28:15,387 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:15,387 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 5
+2023-03-17 22:28:15,491 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:15,547 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 6
+2023-03-17 22:28:15,547 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:15,547 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:15,548 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 6
+2023-03-17 22:28:15,548 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:15,548 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 6
+2023-03-17 22:28:15,654 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:15,973 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/config.yaml
+2023-03-17 22:28:15,974 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-summary.json
+2023-03-17 22:28:16,493 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 7
+2023-03-17 22:28:16,494 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:16,495 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:16,495 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 7
+2023-03-17 22:28:16,496 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:16,496 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 7
+2023-03-17 22:28:16,496 INFO    SenderThread:89791 [dir_watcher.py:finish():362] shutting down directory watcher
+2023-03-17 22:28:16,601 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:16,975 INFO    Thread-13 :89791 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/output.log
+2023-03-17 22:28:16,977 INFO    SenderThread:89791 [dir_watcher.py:finish():392] scan: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files
+2023-03-17 22:28:16,977 INFO    SenderThread:89791 [dir_watcher.py:finish():406] scan save: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/requirements.txt requirements.txt
+2023-03-17 22:28:16,977 INFO    SenderThread:89791 [dir_watcher.py:finish():406] scan save: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/output.log output.log
+2023-03-17 22:28:16,982 INFO    SenderThread:89791 [dir_watcher.py:finish():406] scan save: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/config.yaml config.yaml
+2023-03-17 22:28:16,985 INFO    SenderThread:89791 [dir_watcher.py:finish():406] scan save: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-summary.json wandb-summary.json
+2023-03-17 22:28:16,989 INFO    SenderThread:89791 [dir_watcher.py:finish():406] scan save: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/conda-environment.yaml conda-environment.yaml
+2023-03-17 22:28:16,990 INFO    SenderThread:89791 [dir_watcher.py:finish():406] scan save: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-metadata.json wandb-metadata.json
+2023-03-17 22:28:16,990 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 8
+2023-03-17 22:28:16,993 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:16,995 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:16,997 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 8
+2023-03-17 22:28:16,997 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:16,997 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 8
+2023-03-17 22:28:16,998 INFO    SenderThread:89791 [file_pusher.py:finish():168] shutting down file pusher
+2023-03-17 22:28:17,103 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,103 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,209 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,209 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,314 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,314 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,420 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,420 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,526 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,526 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,632 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,632 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,738 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,738 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,843 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,844 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:17,849 INFO    Thread-19 :89791 [upload_job.py:push():139] Uploaded file /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/output.log
+2023-03-17 22:28:17,860 INFO    Thread-21 :89791 [upload_job.py:push():139] Uploaded file /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/wandb-summary.json
+2023-03-17 22:28:17,862 INFO    Thread-18 :89791 [upload_job.py:push():139] Uploaded file /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/requirements.txt
+2023-03-17 22:28:17,863 INFO    Thread-20 :89791 [upload_job.py:push():139] Uploaded file /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/config.yaml
+2023-03-17 22:28:17,952 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:17,953 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:18,059 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:18,060 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:18,122 INFO    Thread-22 :89791 [upload_job.py:push():139] Uploaded file /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/files/conda-environment.yaml
+2023-03-17 22:28:18,164 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:18,165 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:18,270 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:18,271 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:18,325 INFO    Thread-12 :89791 [sender.py:transition_state():458] send defer: 9
+2023-03-17 22:28:18,326 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:18,326 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 9
+2023-03-17 22:28:18,326 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:18,327 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 9
+2023-03-17 22:28:18,376 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:18,442 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 10
+2023-03-17 22:28:18,442 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:18,443 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:18,444 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 10
+2023-03-17 22:28:18,444 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:18,444 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 10
+2023-03-17 22:28:18,445 INFO    SenderThread:89791 [sender.py:transition_state():458] send defer: 11
+2023-03-17 22:28:18,446 DEBUG   SenderThread:89791 [sender.py:send():301] send: final
+2023-03-17 22:28:18,446 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: defer
+2023-03-17 22:28:18,446 DEBUG   SenderThread:89791 [sender.py:send():301] send: footer
+2023-03-17 22:28:18,446 INFO    HandlerThread:89791 [handler.py:handle_request_defer():161] handle defer: 11
+2023-03-17 22:28:18,446 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: defer
+2023-03-17 22:28:18,446 INFO    SenderThread:89791 [sender.py:send_request_defer():454] handle sender defer: 11
+2023-03-17 22:28:18,551 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: poll_exit
+2023-03-17 22:28:18,551 DEBUG   SenderThread:89791 [sender.py:send_request():315] send_request: poll_exit
+2023-03-17 22:28:18,552 INFO    SenderThread:89791 [file_pusher.py:join():173] waiting for file pusher
+2023-03-17 22:28:18,937 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: sampled_history
+2023-03-17 22:28:18,939 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: get_summary
+2023-03-17 22:28:18,939 INFO    MainThread:89791 [wandb_run.py:_footer_history_summary_info():3321] rendering history
+2023-03-17 22:28:18,940 INFO    MainThread:89791 [wandb_run.py:_footer_history_summary_info():3353] rendering summary
+2023-03-17 22:28:18,940 INFO    MainThread:89791 [wandb_run.py:_footer_sync_info():3277] logging synced files
+2023-03-17 22:28:18,941 DEBUG   HandlerThread:89791 [handler.py:handle_request():138] handle_request: shutdown
+2023-03-17 22:28:18,941 INFO    HandlerThread:89791 [handler.py:finish():807] shutting down handler
+2023-03-17 22:28:19,451 INFO    WriterThread:89791 [datastore.py:close():279] close: /Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/wandb/run-20230317_222809-p9hmm6n9/run-p9hmm6n9.wandb
+2023-03-17 22:28:19,835 INFO    SenderThread:89791 [sender.py:finish():1315] shutting down sender
+2023-03-17 22:28:19,835 INFO    SenderThread:89791 [file_pusher.py:finish():168] shutting down file pusher
+2023-03-17 22:28:19,835 INFO    SenderThread:89791 [file_pusher.py:join():173] waiting for file pusher
+2023-03-17 22:28:20,620 INFO    MainThread:89791 [internal.py:handle_exit():78] Internal process exited

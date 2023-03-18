@@ -1,0 +1,29 @@
+{
+    "os": "macOS-12.6-arm64-arm-64bit",
+    "python": "3.9.16",
+    "heartbeatAt": "2023-03-18T05:28:10.050123",
+    "startedAt": "2023-03-18T05:28:09.547595",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--name",
+        "distilroberta-base",
+        "--epochs",
+        "5",
+        "--device",
+        "cpu"
+    ],
+    "state": "running",
+    "program": "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA/train_scienceqa.py",
+    "codePath": "train_scienceqa.py",
+    "git": {
+        "remote": "https://github.com/naigamshah/scienceQA.git",
+        "commit": "b16a0c64f6d3c958f653c455a082de5c08fd3ee1"
+    },
+    "email": null,
+    "root": "/Users/naigamshah/Documents/UCSD/Quarter2/CSE251B/Assignments/FinalProject/scienceQA",
+    "host": "Naigams-MacBook-Air.local",
+    "username": "naigamshah",
+    "executable": "/Users/naigamshah/miniconda3/envs/torch/bin/python"
+}
