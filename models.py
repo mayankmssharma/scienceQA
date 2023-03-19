@@ -62,20 +62,7 @@ class Model(nn.Module):
             preds = torch.argmax(positive_logits.reshape(-1, self.num_choices), 1)
             preds = list(preds.cpu().numpy())
         else:
-            d_lbl = defaultdict(list)
-            d_pred = defaultdict(list)
-            for c, l, p in zip(content, labels, positive_logits):
-                c_key = c.split('Option')[0]
-                d_lbl[c_key].append(l.detach().cpu().numpy())
-                d_pred[c_key].append(p.detach().cpu().numpy())
-
-            preds = []
-            visited = set()
-            for c in content:
-                c_key = c.split('Option')[0]
-                if c.split('Option')[0] not in visited:
-                    preds.append((np.argmax(d_lbl[c_key]),np.argmax(d_pred[c_key])))
-                    visited.add(c_key)
+            preds = positive_logits
         
         #print(preds)
         #print(preds_cls)

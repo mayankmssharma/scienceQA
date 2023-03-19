@@ -6,6 +6,7 @@ import gc, os, sys
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+import itertools
 from pathlib import Path
 from datetime import datetime
 from argparse import ArgumentParser
@@ -26,66 +27,41 @@ from datasets import load_from_disk
 from sklearn.metrics import accuracy_score, f1_score
 
 class ScienceQADataset(Dataset):
-    def __init__(self, data, input_format, shuffle):
+    def __init__(self, data, shuffle):
         data = pd.DataFrame(data)[["question","choices","answer","hint"]]
         if shuffle:
             data = data.sample(frac=1)
 
-        content, labels = [], []
+        self.question = list(data["question"].values)
+        self.choices = list(data["choices"].values)
+        self.hint = list(data["hint"].values)
+        self.answer = list(data["answer"].values)
         
-        for i, instance in data.iterrows():
-            #if i==500:
-            #    break            
-            q = instance["question"]
-            choices = instance["choices"]
-            a = instance["answer"]
-            h = instance["hint"]
-
-            #Plain text
-            if input_format == "0":
-                for c in choices:
-                    content.append("{} {}".format(q,c))
-
-            #Add prompts for question and option
-            elif input_format == "1":
-                for c in choices:
-                    content.append("Question: {}, Option: {}". format(q, c))
-                
-            #Add prompts for question, hint and option
-            elif input_format=="2":
-                for c in choices:
-                    content.append("Question: {}, Hint: {}, Option: {}". format(q, h, c))
-            
-            y = [0]*len(choices)
-            y[a] = 1
-            labels += y
-                
-        print(len(content),len(labels))
-        self.content, self.labels = content, labels
+        print(len(self.question))
         
     def __len__(self):
-        return len(self.content)
+        return len(self.question)
 
     def __getitem__(self, index):
-        s1, s2 = self.content[index], self.labels[index]
-        return s1, s2
+        s1, s2, s3, s4 = self.question[index], self.choices[index], self.hint[index], self.answer[index]
+        return s1, s2, s3, s4
     
     def collate_fn(self, data):
         dat = pd.DataFrame(data)
         return [dat[i].tolist() for i in dat]
     
     
-def configure_dataloaders(train_batch_size=16, eval_batch_size=16, shuffle=False, input_format="0"):
+def configure_dataloaders(train_batch_size=16, eval_batch_size=16, shuffle=False):
     "Prepare dataloaders"
-    data = load_from_disk("data/scienceqa/scienceQA_wo_images")
+    data = load_from_disk("data/scienceqa/scienceQA")
 
-    train_dataset = ScienceQADataset(data["train"], input_format, True)
+    train_dataset = ScienceQADataset(data["train"], True)
     train_loader = DataLoader(train_dataset, shuffle=shuffle, batch_size=train_batch_size, collate_fn=train_dataset.collate_fn)
 
-    val_dataset = ScienceQADataset(data["validation"], input_format, False)
+    val_dataset = ScienceQADataset(data["validation"], False)
     val_loader = DataLoader(val_dataset, shuffle=False, batch_size=eval_batch_size, collate_fn=val_dataset.collate_fn)
     
-    test_dataset = ScienceQADataset(data["test"], input_format, False)
+    test_dataset = ScienceQADataset(data["test"], False)
     test_loader = DataLoader(test_dataset, shuffle=False, batch_size=eval_batch_size, collate_fn=val_dataset.collate_fn)
 
     return train_loader, val_loader, test_loader
@@ -122,26 +98,60 @@ def configure_scheduler(optimizer, num_training_steps, args):
     )    
     return lr_scheduler
 
+def expand_batch(batch, input_format):
+    content, labels = [], []
+    qs, cs, hs, ans = batch
+    for i, (q, choices, h, a) in enumerate(zip(*batch)):
+        #Plain text
+        if input_format == "0":
+            for c in choices:
+                content.append("{} {}".format(q,c))
 
-def train_or_eval_model(model, dataloader, optimizer=None, split="Train"):
+        #Add prompts for question and option
+        elif input_format == "1":
+            for c in choices:
+                content.append("Question: {}, Option: {}". format(q, c))
+
+        #Add prompts for question, hint and option
+        elif input_format=="2":
+            for c in choices:
+                content.append("Question: {}, Hint: {}, Option: {}". format(q, h, c))
+
+        y = [0]*len(choices)
+        y[a] = 1
+        labels += y
+        
+    return content, labels
+
+def regroup_batch(sizes, l, p):
+    it_l, it_p = iter(l), iter(p)
+    labels = [np.argmax(list(itertools.islice(it_l, size))) for size in sizes]
+    preds = [np.argmax(list(itertools.islice(it_p, size))) for size in sizes]
+        
+    return labels, preds
+
+def train_or_eval_model(model, dataloader, optimizer=None, input_format="0", split="Train"):
     losses, labels, preds, preds_cls, labels_cls,  = [], [], [], [], []
     if split=="Train":
         model.train()
     else:
         model.eval()
-    
-    #if split=="Test": contents = []
-        
+            
     for batch in tqdm(dataloader, leave=False):
         if split=="Train":
             optimizer.zero_grad()
             
-        content, l_cls = batch
-        #if split=="Test": contents.append(content)
-        loss, p, p_cls = model(batch)
+        #Store length of choices to re-group them later
+        sizes = [len(x) for x in batch[1]]
         
-        labels.append([x[0] for x in p])
-        preds.append([x[1] for x in p])
+        content, l_cls = expand_batch(batch, input_format)
+        loss, p, p_cls = model((content, l_cls))
+        
+        #Regroup
+        ls, ps = regroup_batch(sizes, l_cls, p)
+        
+        labels.append(ls)
+        preds.append(ps)
         preds_cls.append(p_cls)
         labels_cls.append(l_cls)
         
@@ -164,7 +174,12 @@ def train_or_eval_model(model, dataloader, optimizer=None, split="Train"):
         f1 = round(f1_score(all_labels_cls, all_preds_cls, average="macro"), 4)
         wandb.log({"Train CLS Accuracy": acc})
         
-        return avg_loss, acc, f1
+        instance_preds = [item for sublist in preds for item in sublist]
+        instance_labels = [item for sublist in labels for item in sublist]
+        instance_acc = round(accuracy_score(instance_labels, instance_preds), 4)
+        wandb.log({"Train Instance Accuracy": instance_acc})
+        
+        return avg_loss, acc, instance_acc, f1
     
     elif split=="Val":
         wandb.log({"Val Loss": avg_loss})
@@ -175,7 +190,6 @@ def train_or_eval_model(model, dataloader, optimizer=None, split="Train"):
         wandb.log({"Val CLS Accuracy": acc})
         
         instance_preds = [item for sublist in preds for item in sublist]
-        #instance_labels = np.array(all_labels_cls).reshape(-1, args.num_choices).argmax(1)
         instance_labels = [item for sublist in labels for item in sublist]
         instance_acc = round(accuracy_score(instance_labels, instance_preds), 4)
         wandb.log({"Val Instance Accuracy": instance_acc})
@@ -208,10 +222,9 @@ if __name__ == "__main__":
     parser.add_argument("--warm-up-steps", type=int, default=0, help="Warm up steps.")
     parser.add_argument("--adam-epsilon", default=1e-8, type=float, help="Epsilon for AdamW optimizer.")
     parser.add_argument("--bs", type=int, default=16, help="Batch size.")
-    parser.add_argument("--eval-bs", type=int, default=64, help="Batch size.")
+    parser.add_argument("--eval-bs", type=int, default=16, help="Batch size.")
     parser.add_argument("--epochs", type=int, default=8, help="Number of epochs.")
     parser.add_argument("--name", default="roberta-large", help="Which model.")
-    parser.add_argument("--device", default="cuda", help="Specify accelerator type")
     parser.add_argument('--shuffle', action='store_true', default=False, help="Shuffle train data such that positive and negative \
         sequences of the same question are not necessarily in the same batch.")
     parser.add_argument('--input-format', default="1", help="How to format the input data.")
@@ -230,11 +243,11 @@ if __name__ == "__main__":
     num_choices = -1
     vars(args)["num_choices"] = num_choices
     
-    device = args.device
+    device = "cpu"
     model = Model(
         name=name,
         num_choices=num_choices,
-        device=device
+        device = device
     ).to(device)
     
     sep_token = model.tokenizer.sep_token
@@ -269,14 +282,14 @@ if __name__ == "__main__":
     wandb.watch(model)
     
     train_loader, val_loader, test_loader = configure_dataloaders(
-            train_batch_size, eval_batch_size, shuffle, input_format
+            train_batch_size, eval_batch_size, shuffle
         )
     
     for e in range(epochs):    
         
-        train_loss, train_acc, train_f1 = train_or_eval_model(model, train_loader, optimizer, split="Train")
-        val_loss, val_acc, val_ins_acc, val_f1 = train_or_eval_model(model, val_loader, split="Val")
-        test_preds, test_loss, test_acc, test_ins_acc, test_f1 = train_or_eval_model(model, test_loader, split="Test")
+        train_loss, train_acc, train_ins_acc, train_f1 = train_or_eval_model(model, train_loader, optimizer, input_format=input_format, split="Train")
+        val_loss, val_acc, val_ins_acc, val_f1 = train_or_eval_model(model, val_loader, input_format=input_format, split="Val")
+        test_preds, test_loss, test_acc, test_ins_acc, test_f1 = train_or_eval_model(model, test_loader, input_format=input_format, split="Test")
         
         with open(path + "-epoch-" + str(e+1) + ".txt", "w") as f:
             f.write("\n".join(list(test_preds)))
@@ -284,7 +297,7 @@ if __name__ == "__main__":
         x = "Epoch {}: Loss: Train {}; Val {}; Test {}".format(e+1, train_loss, val_loss, test_loss)
         y1 = "Classification Acc: Train {}; Val {}; Test {}".format(train_acc, val_acc, test_acc)
         y2 = "Classification Macro F1: Train {}; Val {}; Test {}".format(train_f1, val_f1, test_f1)
-        z = "Instance Acc: Val {}; Test {}".format(val_ins_acc, test_ins_acc)
+        z = "Instance Acc: Train {}; Val {}; Test {}".format(train_ins_acc, val_ins_acc, test_ins_acc)
             
         print (x)
         print (y1)
