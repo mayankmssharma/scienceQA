@@ -227,6 +227,7 @@ if __name__ == "__main__":
     parser.add_argument("--name", default="roberta-large", help="Which model.")
     parser.add_argument('--shuffle', action='store_true', default=False, help="Shuffle train data such that positive and negative \
         sequences of the same question are not necessarily in the same batch.")
+    parser.add_argument("--device", default="cuda", help="Which accelerator to use.")
     parser.add_argument('--input-format', default="1", help="How to format the input data.")
     
     global args
@@ -238,12 +239,12 @@ if __name__ == "__main__":
     epochs = args.epochs
     name = args.name
     shuffle = args.shuffle
+    device = args.device
     input_format = args.input_format
     
     num_choices = -1
     vars(args)["num_choices"] = num_choices
     
-    device = "cpu"
     model = Model(
         name=name,
         num_choices=num_choices,
