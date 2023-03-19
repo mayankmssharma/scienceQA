@@ -130,14 +130,14 @@ def train_or_eval_model(model, dataloader, optimizer=None, split="Train"):
     else:
         model.eval()
     
-    if split=="Test": contents = []
+    #if split=="Test": contents = []
         
     for batch in tqdm(dataloader, leave=False):
         if split=="Train":
             optimizer.zero_grad()
             
         content, l_cls = batch
-        if split=="Test": contents.append(content)
+        #if split=="Test": contents.append(content)
         loss, p, p_cls = model(batch)
         
         labels.append([x[0] for x in p])
