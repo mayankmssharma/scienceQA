@@ -18,10 +18,12 @@ class Model(nn.Module):
         super().__init__()
         
         self.name = name
+        self.imageEmbeddingSize = 2048
         self.num_choices = num_choices
         self.tokenizer = AutoTokenizer.from_pretrained(name, use_fast=True)
         self.device = device
         self.model = AutoModelForSequenceClassification.from_pretrained(name).to(self.device)
+        self.cnnlinear = nn.Linear(self.imageEmbeddingSize, 768)
         self.model.classifier = nn.Linear(768, 768)
         
         self.max_length = 512
@@ -62,12 +64,13 @@ class Model(nn.Module):
         images = torch.from_numpy(images)
         
         imageEmbedding = images.to(self.device)
+        imageEmbeddingOut = self.cnnlinear(imageEmbedding)
         #print(" before = ", imageEmbedding.size())
         #imageEmbedding = img_label * imageEmbedding
         #print(" after = ", imageEmbedding.size())
 
         logits = self.score_input(content)    
-        embeddings = torch.cat((imageEmbedding, logits), dim=1)
+        embeddings = torch.cat((imageEmbeddingOut, logits), dim=1)
         #print(" after cat = ", embeddings.size())
         output = self.scorer(embeddings)
 
